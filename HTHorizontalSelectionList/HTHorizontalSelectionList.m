@@ -68,6 +68,8 @@ static NSString *ViewCellIdentifier = @"ViewCell";
     _collectionView.scrollsToTop = NO;
     _collectionView.canCancelContentTouches = YES;
     _collectionView.translatesAutoresizingMaskIntoConstraints = NO;
+    _collectionView.scrollEnabled = NO;
+
     [self addSubview:_collectionView];
 
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_collectionView]|"
@@ -409,6 +411,8 @@ static NSString *ViewCellIdentifier = @"ViewCell";
                          }
                      }
                      completion:nil];
+    
+    [self.delegate selectionList:self didSelectButtonWithIndex:selectedButtonIndex];
 }
 
 #pragma mark - UICollectionViewDataSource Protocol Methods
