@@ -12,7 +12,6 @@
 
 @interface HTHorizontalSelectionList () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
-@property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UIScrollView *contentView;
 
 @property (nonatomic, strong) UIView *selectionIndicatorBar;
@@ -413,6 +412,7 @@ static NSString *ViewCellIdentifier = @"ViewCell";
                      completion:nil];
     
     [self.delegate selectionList:self didSelectButtonWithIndex:selectedButtonIndex];
+    self.previousButtonIndex = selectedButtonIndex;
 }
 
 #pragma mark - UICollectionViewDataSource Protocol Methods

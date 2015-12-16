@@ -25,12 +25,14 @@ typedef NS_ENUM(NSInteger, HTHorizontalSelectionIndicatorAnimationMode) {
 
 @interface HTHorizontalSelectionList : UIView
 
+@property (nonatomic, strong) UICollectionView *collectionView;
+
 /**
     Returns selected button index or -1 if nothing selected.  To animate changing the selected button, use -setSelectedButtonIndex:animated:.
     NOTE: this value will persist between calls to -reloadData.
  */
 @property (nonatomic) NSInteger selectedButtonIndex;
-
+@property (nonatomic) NSInteger previousButtonIndex;
 @property (nonatomic, weak) id<HTHorizontalSelectionListDataSource> dataSource;
 @property (nonatomic, weak) id<HTHorizontalSelectionListDelegate> delegate;
 
