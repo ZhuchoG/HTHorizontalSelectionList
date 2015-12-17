@@ -411,7 +411,9 @@ static NSString *ViewCellIdentifier = @"ViewCell";
                      }
                      completion:nil];
     
-    [self.delegate selectionList:self didSelectButtonWithIndex:selectedButtonIndex];
+    if ([self.delegate respondsToSelector:@selector(selectionList:didSelectButtonWithIndex:)]) {
+        [self.delegate selectionList:self didSelectButtonWithIndex:selectedButtonIndex];
+    }
     self.previousButtonIndex = selectedButtonIndex;
 }
 
@@ -609,10 +611,6 @@ static NSString *ViewCellIdentifier = @"ViewCell";
     }
 
     [self setSelectedButtonIndex:indexPath.item animated:YES];
-
-    if ([self.delegate respondsToSelector:@selector(selectionList:didSelectButtonWithIndex:)]) {
-        [self.delegate selectionList:self didSelectButtonWithIndex:indexPath.item];
-    }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
